@@ -1,0 +1,47 @@
+Prerequisites
+
+
+1. One Ubuntu 16.04 server 
+
+2. JDK
+$ sudo apt-get update -y 
+$ sudo apt-get install default-jdk -y
+
+3. $ wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+
+When the key is added, the system will return OK. Next, we’ll append the Debian package repository address to the server’s sources.list:
+
+4. $ echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+
+5. $ sudo apt-get update
+
+6. $ sudo apt-get install jenkins
+
+7. $ sudo systemctl start jenkins
+
+8. $ sudo systemctl status jenkins
+
+----------------------------------
+Opening the Firewall
+--------------------------------
+1. $ sudo ufw allow 8080
+
+2. $ sudo ufw status
+
+: If the firewall is inactive, the following commands will make sure that OpenSSH is allowed and then enable it.
+
+$ sudo ufw allow OpenSSH
+$ sudo ufw enable
+
+-------------------------------------------
+
+Setting up Jenkins
+-----------------------------------------
+
+Unlock Jenkins” screen, which displays the location of the initial password
+
+$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+We’ll copy the 32-character alphanumeric password from the terminal and paste it into the “Administrator password” field, then click “Continue”. T
+
+
